@@ -4,3 +4,4 @@ specs
 src
 .npmignore
 .travis.yml
+.eslintrc

@@ -43,6 +43,12 @@ Run the following command within the *syncs-compose* repo to test the library:
 $ npm test
 ```
 
+If you'd like to lint the source:
+
+```
+$ npm run lint
+```
+
 ## API
 
 The syncs-compose library is a simple composition library supporting both sync
