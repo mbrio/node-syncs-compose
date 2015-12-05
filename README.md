@@ -28,7 +28,7 @@ function fun3(next) {
 }
 
 const composed = compose(fun1, fun2, fun3);
-console.log(composed('tester')); // OUTPUTS: "tester 3 2 1"
+composed('tester').then(val => console.log(val)); // OUTPUTS: "tester 3 2 1"
 ```
 
 `composeSync` takes a list of functions and executes them in reverse order,
@@ -65,7 +65,7 @@ function fun3(next) {
 }
 
 const sequenced = sequence(fun1, fun2, fun3);
-console.log(composed('tester')); // OUTPUTS: "tester 1 2 3"
+sequenced('tester').then(val => console.log(val)); // OUTPUTS: "tester 1 2 3"
 ```
 
 `sequenceSync` takes a list of functions and executes them in order, passing
@@ -79,5 +79,5 @@ function fun2(next) { return `${next} 2`; }
 function fun3(next) { return `${next} 3`; }
 
 const sequenced = sequenceSync(fun1, fun2, fun3);
-console.log(composed('tester')); // OUTPUTS: "tester 1 2 3"
+console.log(sequenced('tester')); // OUTPUTS: "tester 1 2 3"
 ```
