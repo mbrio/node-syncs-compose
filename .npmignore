@@ -1,4 +1,5 @@
 .flowconfig
 .gitignore
 specs
+src
 .travis.yml
