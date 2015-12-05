@@ -1,0 +1,10 @@
+[ignore]
+
+[include]
+src/*
+specs/*
+specs/**/*
+
+[libs]
+
+[options]
