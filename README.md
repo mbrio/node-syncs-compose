@@ -2,7 +2,7 @@
 
 [![Build Status](https://api.travis-ci.org/mbrio/node-syncs-compose.svg?branch=master)](https://travis-ci.org/mbrio/node-syncs-compose)
 
-[![NPMnode- Status](https://nodei.co/npm/node-syncs-compose.png?downloads=true)](https://npmjs.org/package/node-syncs-compose)
+[![NPMnode- Status](https://nodei.co/npm/syncs-compose.png?downloads=true)](https://npmjs.org/package/syncs-compose)
 
 ## Build
 
