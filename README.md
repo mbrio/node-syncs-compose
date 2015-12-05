@@ -7,6 +7,12 @@ flow and es2016.
 
 [![NPMnode- Status](https://nodei.co/npm/syncs-compose.png?downloads=true)](https://npmjs.org/package/syncs-compose)
 
+## Git
+
+```
+$ git clone https://github.com/mbrio/node-syncs-compose.git
+```
+
 ## Install
 
 ```

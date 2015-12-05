@@ -12,9 +12,9 @@ function fun1Sync(next: string): string { return `${next} 1`; }
 function fun2Sync(next: string): string { return `${next} 2`; }
 function fun3Sync(next: string): string { return `${next} 3`; }
 
-function fun1(next: string): Object { return new Promise((resolve, reject): any => resolve(`${next} 1`)); }
-function fun2(next: string): Object { return new Promise((resolve, reject): any => resolve(`${next} 2`)); }
-function fun3(next: string): Object { return new Promise((resolve, reject): any => resolve(`${next} 3`)); }
+function fun1(next: string): Object { return Promise.resolve(`${next} 1`); }
+function fun2(next: string): Object { return Promise.resolve(`${next} 2`); }
+function fun3(next: string): Object { return Promise.resolve(`${next} 3`); }
 
 describe('syncs-compose', () => {
   describe('#compose.sync', () => {
