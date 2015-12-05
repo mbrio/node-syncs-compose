@@ -1,6 +1,7 @@
 # esopmoc
 
 [![Build Status](https://travis-ci.org/mbrio/esopmoc.svg?branch=master)](https://travis-ci.org/mbrio/esopmoc)
+
 [![NPM Status](https://nodei.co/npm/esopmoc.png?downloads=true)](https://npmjs.org/package/esopmoc)
 
 The esopmoc library is a simple composition library supporting both sync and
