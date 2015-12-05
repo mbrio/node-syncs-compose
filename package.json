@@ -1,6 +1,6 @@
 {
-  "name": "esopmoc",
-  "version": "1.0.3",
+  "name": "syncs-compose",
+  "version": "1.0.0",
   "description": "A simple composition library supporting both sync and async functions",
   "main": "lib/index.js",
   "dependencies": {},
@@ -18,6 +18,10 @@
   },
   "keywords": [
     "compose",
+    "composer",
+    "synchronous",
+    "asynchronous",
+    "async",
     "composition",
     "flow",
     "es2015",
@@ -26,7 +30,7 @@
   "scripts": {
     "test": "mocha specs/bootstrap.spec.js specs/unit/*.spec.js",
     "build": "babel src --out-dir lib --presets react,es2015,stage-0",
-    "prepublish": "npm run build",
+    "prepublish": "npm test && npm run build",
     "clean": "rimraf lib"
   },
   "author": {
@@ -37,8 +41,8 @@
   "license": "BSD-3-Clause",
   "repository": {
     "type": "git",
-    "url": "git://github.com/mbrio/node-esopmoc.git"
+    "url": "git://github.com/mbrio/node-syncs-compose.git"
   },
-  "homepage": "https://github.com/mbrio/node-esopmoc",
-  "bugs": "https://github.com/mbrio/bijous/node-esopmoc"
+  "homepage": "https://github.com/mbrio/node-syncs-compose",
+  "bugs": "https://github.com/mbrio/node-syncs-compose/issues"
 }

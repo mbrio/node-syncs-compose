@@ -1,11 +1,37 @@
-# esopmoc
+# syncs-compose
 
-[![Build Status](https://api.travis-ci.org/mbrio/node-esopmoc.svg?branch=master)](https://travis-ci.org/mbrio/esopmoc)
+[![Build Status](https://api.travis-ci.org/mbrio/node-syncs-compose.svg?branch=master)](https://travis-ci.org/mbrio/node-syncs-compose)
 
-[![NPM Status](https://nodei.co/npm/esopmoc.png?downloads=true)](https://npmjs.org/package/esopmoc)
+[![NPMnode- Status](https://nodei.co/npm/node-syncs-compose.png?downloads=true)](https://npmjs.org/package/node-syncs-compose)
 
-The esopmoc library is a simple composition library supporting both sync and
-async functions. It makes available four functions: `compose`, `sequence`,
+## Build
+
+Run the following command within the *syncs-compose* repo to build es5 JS files:
+
+```
+$ npm run build
+```
+
+When the above command is executed a *lib* folder will be created with the
+compiled JS files within. To cleanup the *lib* folder you can run the following
+command within the *syncs-compose* repo:
+
+```
+$ npm run clean
+```
+
+## Testing
+
+Run the following command within the *syncs-compose* repo to test the library:
+
+```
+$ npm test
+```
+
+## API
+
+The syncs-compose library is a simple composition library supporting both sync
+and async functions. It makes available four functions: `compose`, `sequence`,
 `compose.sync`, and `sequence.sync`.
 
 `compose` takes a list of asynchronous functions and executes them in reverse
@@ -13,7 +39,7 @@ order, passing the previously returned value to the next function as its first
 parameter. Each function passed must return a `Promise`.
 
 ```
-import { compose } from 'esopmoc';
+import { compose } from 'syncs-compose';
 
 function fun1(next) {
   return new Promise((resolve, reject) => resolve(`${next} 1`));
@@ -35,7 +61,7 @@ composed('tester').then(val => console.log(val)); // OUTPUTS: "tester 3 2 1"
 passing the previously returned value to the next function.
 
 ```
-import { compose.sync } from 'esopmoc';
+import { compose.sync } from 'syncs-compose';
 
 function fun1(next) { return `${next} 1`; }
 function fun2(next) { return `${next} 2`; }
@@ -50,7 +76,7 @@ passing the previously returned value to the next function as its first
 parameter. Each function passed must return a `Promise`.
 
 ```
-import { sequence } from 'esopmoc';
+import { sequence } from 'syncs-compose';
 
 function fun1(next) {
   return new Promise((resolve, reject) => resolve(`${next} 1`));
@@ -72,7 +98,7 @@ sequenced('tester').then(val => console.log(val)); // OUTPUTS: "tester 1 2 3"
 the previously returned value to the next function.
 
 ```
-import { sequence.sync } from 'esopmoc';
+import { sequence.sync } from 'syncs-compose';
 
 function fun1(next) { return `${next} 1`; }
 function fun2(next) { return `${next} 2`; }
@@ -81,3 +107,7 @@ function fun3(next) { return `${next} 3`; }
 const sequenced = sequence.sync(fun1, fun2, fun3);
 console.log(sequenced('tester')); // OUTPUTS: "tester 1 2 3"
 ```
+
+## License
+
+*syncs-compose* is [BSD licensed](./LICENSE).

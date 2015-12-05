@@ -16,7 +16,7 @@ function fun1(next: string): Object { return new Promise((resolve, reject): any 
 function fun2(next: string): Object { return new Promise((resolve, reject): any => resolve(`${next} 2`)); }
 function fun3(next: string): Object { return new Promise((resolve, reject): any => resolve(`${next} 3`)); }
 
-describe('esopmoc', () => {
+describe('syncs-compose', () => {
   describe('#compose.sync', () => {
     it ('should compose functions in reverse order, synchronously', () => {
       expect(compose.sync(fun1Sync, fun2Sync, fun3Sync)('tester'))
