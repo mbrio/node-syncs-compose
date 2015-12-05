@@ -1,6 +1,6 @@
 {
   "name": "esopmoc",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A simple composition library supporting both sync and async functions",
   "main": "lib/index.js",
   "dependencies": {},

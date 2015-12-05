@@ -6,7 +6,7 @@ declare function describe(m: string, cb: emptyCB): void;
 declare function it(m: string, cb: tCB): void;;
 
 import { expect } from 'chai';
-import { composeSync, sequenceSync, compose, sequence } from '../../src';
+import { compose, sequence } from '../../src';
 
 function fun1Sync(next: string): string { return `${next} 1`; }
 function fun2Sync(next: string): string { return `${next} 2`; }
@@ -17,16 +17,16 @@ function fun2(next: string): Object { return new Promise((resolve, reject): any 
 function fun3(next: string): Object { return new Promise((resolve, reject): any => resolve(`${next} 3`)); }
 
 describe('esopmoc', () => {
-  describe('#composeSync', () => {
+  describe('#compose.sync', () => {
     it ('should compose functions in reverse order, synchronously', () => {
-      expect(composeSync(fun1Sync, fun2Sync, fun3Sync)('tester'))
+      expect(compose.sync(fun1Sync, fun2Sync, fun3Sync)('tester'))
         .to.equal('tester 3 2 1');
     });
   });
 
-  describe('#sequenceSync', () => {
+  describe('#sequence.sync', () => {
     it ('should compose functions in order, synchronously', () => {
-      expect(sequenceSync(fun1Sync, fun2Sync, fun3Sync)('tester'))
+      expect(sequence.sync(fun1Sync, fun2Sync, fun3Sync)('tester'))
         .to.equal('tester 1 2 3');
     });
   });

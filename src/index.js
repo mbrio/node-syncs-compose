@@ -17,8 +17,10 @@ function c(fns: Array<CB>, dir: string = RIGHT, useAsync: boolean = false) : any
   return (x: any): any => { return reducer(handler, useAsync ? Promise.resolve(x) : x); }
 }
 
-export function composeSync(...fns: Array<CB>): any { return c(fns); }
-export function sequenceSync(...fns: Array<CB>): any { return c(fns, LEFT); }
+function compose(...fns: Array<CB>): any { return c(fns, RIGHT, true); }
+function sequence(...fns: Array<CB>): any { return c(fns, LEFT, true); }
 
-export function compose(...fns: Array<CB>): any { return c(fns, RIGHT, true); }
-export function sequence(...fns: Array<CB>): any { return c(fns, LEFT, true); }
+compose.sync = function composeSync(...fns: Array<CB>): any { return c(fns, RIGHT, false); }
+sequence.sync = function sequenceSync(...fns: Array<CB>): any { return c(fns, LEFT, false); }
+
+export { compose, sequence };

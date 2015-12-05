@@ -6,7 +6,7 @@
 
 The esopmoc library is a simple composition library supporting both sync and
 async functions. It makes available four functions: `compose`, `sequence`,
-`composeSync`, and `sequenceSync`.
+`compose.sync`, and `sequence.sync`.
 
 `compose` takes a list of asynchronous functions and executes them in reverse
 order, passing the previously returned value to the next function as its first
@@ -31,17 +31,17 @@ const composed = compose(fun1, fun2, fun3);
 composed('tester').then(val => console.log(val)); // OUTPUTS: "tester 3 2 1"
 ```
 
-`composeSync` takes a list of functions and executes them in reverse order,
+`compose.sync` takes a list of functions and executes them in reverse order,
 passing the previously returned value to the next function.
 
 ```
-import { composeSync } from 'esopmoc';
+import { compose.sync } from 'esopmoc';
 
 function fun1(next) { return `${next} 1`; }
 function fun2(next) { return `${next} 2`; }
 function fun3(next) { return `${next} 3`; }
 
-const composed = composeSync(fun1, fun2, fun3);
+const composed = compose.sync(fun1, fun2, fun3);
 console.log(composed('tester')); // OUTPUTS: "tester 3 2 1"
 ```
 
@@ -68,16 +68,16 @@ const sequenced = sequence(fun1, fun2, fun3);
 sequenced('tester').then(val => console.log(val)); // OUTPUTS: "tester 1 2 3"
 ```
 
-`sequenceSync` takes a list of functions and executes them in order, passing
+`sequence.sync` takes a list of functions and executes them in order, passing
 the previously returned value to the next function.
 
 ```
-import { sequenceSync } from 'esopmoc';
+import { sequence.sync } from 'esopmoc';
 
 function fun1(next) { return `${next} 1`; }
 function fun2(next) { return `${next} 2`; }
 function fun3(next) { return `${next} 3`; }
 
-const sequenced = sequenceSync(fun1, fun2, fun3);
+const sequenced = sequence.sync(fun1, fun2, fun3);
 console.log(sequenced('tester')); // OUTPUTS: "tester 1 2 3"
 ```
