@@ -2,6 +2,8 @@
 .gitignore
 specs
 src
+coverage
+doc
 .npmignore
 .travis.yml
 .eslintrc

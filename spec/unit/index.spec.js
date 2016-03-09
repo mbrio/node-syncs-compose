@@ -5,7 +5,6 @@ type tCB = (cb: emptyCB) => void;
 declare function describe(m: string, cb: emptyCB): void;
 declare function it(m: string, cb: tCB): void;;
 
-import { expect } from 'chai';
 import { compose, sequence } from '../../src';
 
 function fun1Sync(next: string): string { return `${next} 1`; }
@@ -18,33 +17,31 @@ function fun3(next: string): Object { return Promise.resolve(`${next} 3`); }
 
 describe('syncs-compose', () => {
   describe('#compose.sync', () => {
-    it ('should compose functions in reverse order, synchronously', () => {
+    it('should compose functions in reverse order, synchronously', () => {
       expect(compose.sync(fun1Sync, fun2Sync, fun3Sync)('tester'))
-        .to.equal('tester 3 2 1');
+        .toBe('tester 3 2 1');
     });
   });
 
   describe('#sequence.sync', () => {
-    it ('should compose functions in order, synchronously', () => {
+    it('should compose functions in order, synchronously', () => {
       expect(sequence.sync(fun1Sync, fun2Sync, fun3Sync)('tester'))
-        .to.equal('tester 1 2 3');
+        .toBe('tester 1 2 3');
     });
   });
 
   describe('#compose', () => {
-    it ('should compose functions in reverse order, synchronously', done => {
-      compose(fun1, fun2, fun3)('tester').then(val => {
-        expect(val).to.equal('tester 3 2 1');
-        done();
+    pit('should compose functions in reverse order, synchronously', () => {
+      return compose(fun1, fun2, fun3)('tester').then(val => {
+        expect(val).toBe('tester 3 2 1');
       });
     });
   });
 
   describe('#sequence', () => {
-    it ('should compose functions in order, synchronously', done => {
-      sequence(fun1, fun2, fun3)('tester').then(val => {
-        expect(val).to.equal('tester 1 2 3');
-        done();
+    pit('should compose functions in order, synchronously', () => {
+      return sequence(fun1, fun2, fun3)('tester').then(val => {
+        expect(val).toBe('tester 1 2 3');
       });
     });
   });
