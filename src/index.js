@@ -1,19 +1,17 @@
 /* @flow */
 
-/**
- * A flow type that corresponds with our composition callback function
- * @typedef {function(?Object)} CB
- */
 type CB = (x: any) => any;
 
 /**
  * Instruct syncs-compose to execute functions from right to left
+ * @name RIGHT
  * @type {string}
  */
 const RIGHT: string = '@@compose/direction/RIGHT';
 
 /**
  * Instruct syncs-compose to execute functions from left to right
+ * @name LEFT
  * @type {string}
  */
 const LEFT: string = '@@compose/direction/LEFT';
@@ -31,12 +29,14 @@ const LEFT: string = '@@compose/direction/LEFT';
  * first parameter.
  *
  * When executing asynchronous functions, each function must return a Promise.
+ * @alias c
+ * @function
  *
- * @param {CB[]} fns The functions to execute
+ * @param {function[]} fns The functions to execute
  * @param {string} dir The direction to execute the functions
  * @param {boolean} useAsync Are the functions asynchronous
  *
- * @return {?Object} The result of the last executed function
+ * @return {?object} The result of the last executed function
  */
 function c(fns: Array<CB>, dir: string = RIGHT, useAsync: boolean = false) : any {
   const reducer = dir === RIGHT ?
@@ -53,9 +53,11 @@ function c(fns: Array<CB>, dir: string = RIGHT, useAsync: boolean = false) : any
 /**
  * Executes asynchronous functions as a composition, each function must return a
  * Promise.
+ * @alias compose
+ * @function
  *
- * @param {...CB} fns The functions to execute
-
+ * @param {...function} fns The functions to execute
+ *
  * @return {Promise} The Promise of the last executed function
  */
 function compose(...fns: Array<CB>): any { return c(fns, RIGHT, true); }
@@ -63,27 +65,33 @@ function compose(...fns: Array<CB>): any { return c(fns, RIGHT, true); }
 /**
  * Executes asynchronous functions as a sequence, each function must return a
  * Promise.
+ * @alias sequence
+ * @function
  *
- * @param {...CB} fns The functions to execute
-
+ * @param {...function} fns The functions to execute
+ *
  * @return {Promise} The Promise of the last executed function
  */
 function sequence(...fns: Array<CB>): any { return c(fns, LEFT, true); }
 
 /**
- * Executes synchronous functions as a composition.
+ * Executes synchronous functions as a composition. Explorted as compose.sync.
+ * @alias composeSync
+ * @function
  *
- * @param {...CB} fns The functions to execute
-
+ * @param {...function} fns The functions to execute
+ *
  * @return {?object} The result of the last executed function
  */
 compose.sync = function composeSync(...fns: Array<CB>): any { return c(fns, RIGHT, false); };
 
 /**
- * Executes synchronous functions as a sequence.
+ * Executes synchronous functions as a sequence. Exported as sequence.sync.
+ * @alias sequenceSync
+ * @function
  *
- * @param {...CB} fns The functions to execute
-
+ * @param {...function} fns The functions to execute
+ *
  * @return {?object} The result of the last executed function
  */
 sequence.sync = function sequenceSync(...fns: Array<CB>): any { return c(fns, LEFT, false); };
