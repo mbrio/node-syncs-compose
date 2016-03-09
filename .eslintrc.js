@@ -5,6 +5,9 @@ module.exports = {
     },
     "extends": ["eslint:recommended"],
     "parser": "babel-eslint",
+    "plugins": [
+        "flowtype"
+    ],
     "globals": {
         "jest": true,
         "describe": true,
@@ -16,6 +19,22 @@ module.exports = {
         "expect": true
     },
     "rules": {
+        "flowtype/require-parameter-type": 1,
+        "flowtype/require-return-type": [
+            1,
+            "always",
+            {
+                "annotateUndefined": "never"
+            }
+        ],
+        "flowtype/space-after-type-colon": [
+            1,
+            "always"
+        ],
+        "flowtype/space-before-type-colon": [
+            1,
+            "never"
+        ],
         "indent": [
             "error",
             2

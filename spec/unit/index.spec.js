@@ -1,9 +1,9 @@
 /* @flow */
 
 type emptyCB = () => void;
-type tCB = (cb: emptyCB) => void;
+type tCB = (cb: emptyCB) => void; //eslint-disable-line no-unused-vars
 declare function describe(m: string, cb: emptyCB): void;
-declare function it(m: string, cb: tCB): void;;
+declare function it(m: string, cb: tCB): void;
 
 import { compose, sequence } from '../../src';
 
@@ -31,16 +31,16 @@ describe('syncs-compose', () => {
   });
 
   describe('#compose', () => {
-    pit('should compose functions in reverse order, synchronously', () => {
-      return compose(fun1, fun2, fun3)('tester').then(val => {
+    pit('should compose functions in reverse order, synchronously', (): Promise => {
+      return compose(fun1, fun2, fun3)('tester').then((val: string)  => {
         expect(val).toBe('tester 3 2 1');
       });
     });
   });
 
   describe('#sequence', () => {
-    pit('should compose functions in order, synchronously', () => {
-      return sequence(fun1, fun2, fun3)('tester').then(val => {
+    pit('should compose functions in order, synchronously', (): Promise => {
+      return sequence(fun1, fun2, fun3)('tester').then((val: string) => {
         expect(val).toBe('tester 1 2 3');
       });
     });
